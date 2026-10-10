@@ -41,27 +41,27 @@ def generate_certificate_pdf(name: str, filename: str) -> str:
         # Subtitle
         c.setFont("Helvetica", 12)
         c.setFillColor(HexColor("#34495e"))
-        c.drawCentredString(width / 2.0, height - 200, "THIS IS TO CERTIFY THAT")
+        c.drawCentredString(width / 2.0, height - 210, "THIS IS TO CERTIFY THAT")
 
         # Recipient Name (Elegant font)
         c.setFont("Times-BoldItalic", 56)
         c.setFillColor(HexColor("#111827"))
-        c.drawCentredString(width / 2.0, height - 290, name)
+        c.drawCentredString(width / 2.0, height - 300, name)
         
         # Underline for the name
         c.setStrokeColor(HexColor("#0f3156"))
         c.setLineWidth(1.5)
-        c.line(width / 2.0 - 180, height - 310, width / 2.0 + 180, height - 310)
+        c.line(width / 2.0 - 200, height - 320, width / 2.0 + 200, height - 320)
         
         # Completion Text
         c.setFont("Helvetica", 12)
         c.setFillColor(HexColor("#34495e"))
-        c.drawCentredString(width / 2.0, height - 350, "HAS SUCCESSFULLY COMPLETED")
+        c.drawCentredString(width / 2.0, height - 370, "HAS SUCCESSFULLY COMPLETED")
 
         # Course Name
         c.setFont("Helvetica-Bold", 24)
         c.setFillColor(HexColor("#0f3156"))
-        c.drawCentredString(width / 2.0, height - 410, "THE COURSE NAME")
+        c.drawCentredString(width / 2.0, height - 430, "THE COURSE NAME")
 
         # Footer Lines (Date & Signature)
         c.setStrokeColor(HexColor("#34495e"))
@@ -75,6 +75,11 @@ def generate_certificate_pdf(name: str, filename: str) -> str:
         # Signature Line
         c.line(width / 2.0 + 120, 110, width / 2.0 + 280, 110)
         c.drawCentredString(width / 2.0 + 200, 95, "SIGNATURE")
+
+        # Issued automatically tag (Bottom Right)
+        c.setFont("Helvetica", 8)
+        c.setFillColor(HexColor("#95a5a6"))
+        c.drawRightString(width - 40, 40, "Issued automatically by BulkCertify")
 
         c.save()
         return filepath
